@@ -5,26 +5,26 @@
 
 typedef struct StackNode
 {
-	int cek_karakter;
-	Data data;
-	struct StackNode *pNode;
-} StackNode;
+	int cek_karakter;			//angka/value untuk menampung hasil Boolean (1 untuk TRUE, 0 untuk FALSE)
+	Data data;					//Data bernama 'data'
+	struct StackNode *pNode;	//pointer Node
+} StackNode;					//Node Stack
 
 typedef struct Stack
 {
-	StackNode *topNode;
-} Stack;
+	StackNode *topNode;			//pointer yang menunjuk posisi paling atas Node Stack
+} Stack;						//Stack
 
 int isEmpty(Stack *stack);		//Mengecek kondisi apakah stack kosong atau tidak
 
-StackNode* buatNodeStack();
-Stack* buatStack();
+StackNode* buatNodeStack();		//membuat Node pada Stack
+Stack* buatStack();				//membuat Stack
 
-void cetakStack(StackNode*);
+void cetakStack(StackNode*);	//Mencetak elemen pada stack
 
-void push(Stack *stack, Data isiTree, int isChar);
-StackNode pop(Stack *stack);
+void push(Stack *stack, Data isiTree, int isChar);	//melakukan push pada stack
+StackNode pop(Stack *stack);	//menghapus elemen pada stack
 
-void hapusStack(Stack *stack);
+void hapusStack(Stack *stack);	//menghapus seluruh elemen stack
 
-#endif // STACK_H_INCLUDED
+#endif 

@@ -1,71 +1,71 @@
 #include "Tree.h"
 
-Root* buatAkarDaun()
+Root* buatAkarDaun()								//membuat Root pada Tree dengan alokasi memori
 {
-	Root* tampung = (Root*)calloc(sizeof(Root), 1);
-	if(!tampung) {
-		printf("Alokasi memori gagal!");
+	Root* tampung = (Root*)calloc(sizeof(Root), 1);	//alokasi memori
+	if(!tampung) {									//jika Tree tidak terbentuk
+		printf("Alokasi memori gagal!");			//jika gagal, akan menampilkan pesan
 		exit(1);
 	}
 	return tampung;
 }
 
-TreeNode* buatDaunPohon()
+TreeNode* buatDaunPohon()										//Membuat leaf (daun) pada Tree dengan alokasi memori
 {
-	TreeNode* tampung = (TreeNode*)calloc(sizeof(TreeNode), 1);
-	if(!tampung){
-		puts("Alokasi memori gagal!");
+	TreeNode* tampung = (TreeNode*)calloc(sizeof(TreeNode), 1); //alokasi memori
+	if(!tampung){												//jika leaf pada Tree tidak terbentuk
+		puts("Alokasi memori gagal!"); 							//jika gagal, akan menampilkan pesan
 		exit(1);
 	}
 	return tampung;
 }
 
-TreeNode* buatAnak(TreeNode *nodeParent, Data isiTree, int cek_karakter)
+TreeNode* buatAnak(TreeNode *nodeParent, Data isiTree, int cek_karakter)	//membuat anak Tree
 {
-	if(!nodeParent)
+	if(!nodeParent)									//jika Node pada Parent Tree tidak Null
 	{
-		nodeParent = buatDaunPohon();
-		nodeParent->data = isiTree;
-		nodeParent->cek_karakter = cek_karakter;
+		nodeParent = buatDaunPohon();				//Alokasi memori leaf (anak) Tree
+		nodeParent->data = isiTree;					//lakukan assign data ke nodeParent pointer data
+		nodeParent->cek_karakter = cek_karakter;	//lakukan assign nilai Boolean dari cek_karakter ke nodeParent pointer data
 		return nodeParent;
 	}
 	
-	if(nodeParent->left && nodeParent->right)
+	if(nodeParent->left && nodeParent->right)				//Jika pointer menunjuk pada Node kiri atau kanan
 	{
-		nodeParent = nodeParent->parent;
+		nodeParent = nodeParent->parent;					//pointer menunjuk pada parent
 		
-		if(!nodeParent)	
+		if(!nodeParent)										//jika node parent tidak ada, mengembalikan nilai NULL
 		return NULL;
 		
-		return buatAnak(nodeParent, isiTree, cek_karakter);
+		return buatAnak(nodeParent, isiTree, cek_karakter);	//mengembalikan modul buatAnak()
 	}
-
-	if(!cek_karakter) // bilanganber, from right. return self node pointer.
+	// mengembalikan pointer itu sendiri
+	if(!cek_karakter) 											//jika cek_karakter = NULL	
 	{
-		if(nodeParent->right)
+		if(nodeParent->right)									//Jika nodeParent menunjuk ke kanan
 		{
-			buatAnakKiri(nodeParent, isiTree, cek_karakter);
+			buatAnakKiri(nodeParent, isiTree, cek_karakter);	//Buat anak parent untuk sebelah kiri
 		}
-		else
+		else													//Jika nodeParent menunjuk ke kiri
 		{
-			buatAnakKanan(nodeParent, isiTree, cek_karakter);
+			buatAnakKanan(nodeParent, isiTree, cek_karakter);	//Buat anak parent untuk sebelah kanan
 		}
-		return nodeParent;
+		return nodeParent;										//Mengembalikan nodeParent
 	}
 	
-	else // operator, from left. return its child node pointer.
+	else // untuk operator, mengembalikan pointer dari node anak Parent.
 	{
 
-		if(nodeParent->left)
+		if(nodeParent->left)	//Jika nodeParent menunjuk ke kiri
 		{
-			buatAnakKanan(nodeParent, isiTree, cek_karakter);
-			return nodeParent->right;
+			buatAnakKanan(nodeParent, isiTree, cek_karakter);	//membuat anak Kanan
+			return nodeParent->right;	//pointer menunjuk ke sebeleah kanan
 		}
 
 		else
 		{
-			buatAnakKiri(nodeParent, isiTree, cek_karakter);
-			return nodeParent->left;
+			buatAnakKiri(nodeParent, isiTree, cek_karakter);	//membuat anak Kanan
+			return nodeParent->left;	//pointer menunjuk ke sebeleah kanan
 		}
 	}
 	
@@ -73,98 +73,103 @@ TreeNode* buatAnak(TreeNode *nodeParent, Data isiTree, int cek_karakter)
 
 void buatAnakKiri(TreeNode *nodeParent, Data isiTree, int cek_karakter)
 {
-	TreeNode* tampung = buatDaunPohon();
+	TreeNode* tampung = buatDaunPohon();	//Melakukan alokasi memori untuk leaf Tree (Daun)
 	
-	if(!tampung)	
-	return;
+	if(!tampung)	//jika objek tampung Null
+	return;			//tidak mengembalikan apa-apa
 	
-	tampung->data = isiTree;
-	tampung->cek_karakter = cek_karakter;
-	nodeParent->left = tampung;
-	tampung->parent = nodeParent;
+	tampung->data = isiTree;				//assign value pada pointer data dengan isiTree
+	tampung->cek_karakter = cek_karakter;	//assign value pada pointer cek_karakter dengan value cek_karakter
+	nodeParent->left = tampung;				//assign value pada pointer left dengan value tampung
+	tampung->parent = nodeParent;			//assign value pada pointer parent dengan nodeParent
 }
 
 void buatAnakKanan(TreeNode *nodeParent, Data isiTree, int cek_karakter)
 {
-	TreeNode* tampung = buatDaunPohon();
-	if(!tampung)	
-	return;
+	TreeNode* tampung = buatDaunPohon();	//Melakukan alokasi memori untuk leaf Tree (Daun)
 	
-	tampung->data = isiTree;
-	tampung->cek_karakter = cek_karakter;
-	nodeParent->right = tampung;
-	tampung->parent = nodeParent;
+	if(!tampung)	//jika objek tampung Null
+	return;			//tidak mengembalikan apa-apa
+	
+	tampung->data = isiTree;				//assign value pada pointer data dengan isiTree
+	tampung->cek_karakter = cek_karakter;	//assign value pada pointer cek_karakter dengan value cek_karakter
+	nodeParent->right = tampung;			//assign value pada pointer right dengan value tampung
+	tampung->parent = nodeParent;			//assign value pada pointer parent dengan nodeParent
 }
 
-void cetakTree(Data isiTree, int cek_karakter)
+
+//** Cetak dan Pilih **//
+void cetakTree(Data isiTree, int cek_karakter)		//mencetak Tree
 {
-	if(cek_karakter) {
-		printf("%c", isiTree.operatorMatematis);
+	if(cek_karakter) {								//jika variabel cek_karakter adalah angka
+		printf("%c", isiTree.operatorMatematis);	//mencetak operator Matematis
 	}
 	else {
-		printf("%g", isiTree.bilangan);
+		printf("%g", isiTree.bilangan);				//mencetak angka pada operasi matematik
 	}
 }
 
 void pilihanTraversal(Root *root, int mode)
 {
-	TreeNode *tampung = root->root;
+	TreeNode *tampung = root->root;	//pointer root menunjuk ke akar (paling atas)
 	
 	switch(mode)
 	{
-		case PREORDER:
+		case 1:	//Pilihan 1 : mencetak elemen Tree secara preOrder
 			preOrder(tampung);
 			break;
-		case INORDER:
+		case 2:	//Pilihan 2 : mencetak elemen Tree secara inOrder
 			inOrder(tampung);
 			break;
-		case POSTORDER:
+		case 3:	//Pilihan 3 : mencetak elemen Tree secara postOrder
 			postOrder(tampung);
 			break;
 	}
 }
 
-void preOrder(TreeNode *daunTree)
+//** Cetak, Traversal, dan Hapus **//
+
+void preOrder(TreeNode *daunTree)	//Traversal secara preOrder
 {
-	if(!daunTree)	
-	return;
+	if(!daunTree)	//jika leaf pada Tree tidak ada
+	return;			//Modul berhenti
 	
-	cetakTree(daunTree->data, daunTree->cek_karakter);
-	preOrder(daunTree->left);
-	preOrder(daunTree->right);
+	cetakTree(daunTree->data, daunTree->cek_karakter);	//mencetak isi Tree
+	preOrder(daunTree->left);							//Melakukan preorder ke kiri Tree
+	preOrder(daunTree->right);							//Melakukan preorder ke kiri Tree
 }
 
-void inOrder(TreeNode *daunTree)
+void inOrder(TreeNode *daunTree)	//Traversal secara inOrder
 {
-	if(!daunTree)	
-	return;
+	if(!daunTree)	//jika daun (anak) dari Tree tidak ada
+	return;			//tidak mengembalikan apa-apa
 	
-	inOrder(daunTree->left);
-	cetakTree(daunTree->data, daunTree->cek_karakter);
-	inOrder(daunTree->right);
+	inOrder(daunTree->left);							//melakukan postorder
+	cetakTree(daunTree->data, daunTree->cek_karakter);	//mencetak isi Tree setelah dilakukan traversal
+	inOrder(daunTree->right);							//melakukan postorder
 }
 
-void postOrder(TreeNode *daunTree)
+void postOrder(TreeNode *daunTree)	//Traversal secara postOrder
 {
-	if(!daunTree)	
-	return;
+	if(!daunTree)	//jika daun (anak) dari Tree tidak ada	
+	return;			//tidak mengembalikan apa-apa
 	
-	postOrder(daunTree->left);
-	postOrder(daunTree->right);
-	cetakTree(daunTree->data, daunTree->cek_karakter);
+	postOrder(daunTree->left);							//melakukan postorder pada anak (child) sebelah kanan
+	postOrder(daunTree->right);							//melakukan postorder pada anak (child) sebelah kanan
+	cetakTree(daunTree->data, daunTree->cek_karakter);	//mencetak isi Tree setelah dilakukan traversal
 }
 
-void hapusNode(TreeNode *daunTree)
+void hapusNode(TreeNode *daunTree)	//Menghapus salah satu elemen node pada Tree
 {
-	if(!daunTree)	
-	return;
+	if(!daunTree)	//jika daun (anak) dari Tree tidak ada	
+	return;			//tidak mengembalikan apa-apa
 	
-	hapusNode(daunTree->left);
-	hapusNode(daunTree->right);
-	free(daunTree);
+	hapusNode(daunTree->left);	 //menghapus node pada Tree sebelah kiri
+	hapusNode(daunTree->right); //menghapus node pada Tree sebelah kanan
+	free(daunTree);				//menghapus node pada Tree
 }
 
-void hapusSemuaTree(Root* root)
+void hapusSemuaTree(Root* root)	//Menghapus semua elemen node pada Tree
 {
-	hapusNode(root->root);
+	hapusNode(root->root);	//menghapus Tree pada Akar
 }
