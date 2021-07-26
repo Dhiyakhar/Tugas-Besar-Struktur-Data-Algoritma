@@ -1,4 +1,5 @@
 #include <ctype.h> // untuk menggunakan fungsi 'isdigit()'
+#include <math.h>  // untuk menggunakan fungsi 'pow()'
 #include "Tree.h"
 #include "Stack.h"
 
@@ -55,13 +56,16 @@ void cekDanSetKarakter(char daunStack)	//Mengecek apakah elemen stack merupakan 
 void lingkaran()
 {
    int jari_jari;
-   float luasLingkaran;
+   float luasLingkaran, kelilingLingkaran;
  
-   printf("\nEnter the radius of Circle : ");
+   printf("\nMasukkan jari-jari lingkaran : ");
    scanf("%d", &jari_jari);
  
-   luasLingkaran = 3 * jari_jari * jari_jari;
-   printf("\nArea of Circle : %f", luasLingkaran);
+   luasLingkaran = 3.14 * jari_jari * jari_jari;
+   printf("Luas Lingkaran : %f", luasLingkaran);
+   
+   luasLingkaran = 2 * 3.14 * jari_jari;
+   printf("Keliling Lingkaran : %f", kelilingLingkaran);
 }
 
 /* Modul-modul Program : */
@@ -75,31 +79,58 @@ void lingkaran()
 
 void segitiga()
 {
-   int base, height;
-   float luasSegitiga;
+   int alas, tinggi, panjang1, panjang2, panjang3;
+   float luasSegitiga, kelilingSegitiga;
  
-   printf("\nEnter the base of Right Angle Triangle : ");
-   scanf("%d", &base);
+   printf("\nMasukkan panjang alas segitiga : ");
+   scanf("%d", &alas);
  
-   printf("\nEnter the height of Right Angle Triangle : ");
-   scanf("%d", &height);
+   printf("Masukkan panjang tinggi segitiga : ");
+   scanf("%d", &tinggi);
  
-   luasSegitiga = 0.5 * base * height;
-   printf("\nArea of Right Angle Triangle : %f", luasSegitiga);
+   luasSegitiga = 0.5 * alas * tinggi;
+   printf("\nLuas Segitiga : %f", luasSegitiga);
+   
+   printf("\nMasukkan panjang tinggi segitiga : ");
+   scanf("%d", &panjang1);
+   
+   printf("Masukkan panjang tinggi segitiga : ");
+   scanf("%d", &panjang2);
+   
+   printf("Masukkan panjang tinggi segitiga : ");
+   scanf("%d", &panjang3);
+   
+   luasSegitiga = 0.5 * alas * tinggi;
+   kelilingSegitiga = panjang1 + panjang2 + panjang3;
+   
+   printf("\nLuas Segitiga : %f", luasSegitiga);
+   printf("\nKeliling Segitiga : %f", kelilingSegitiga);
 }
+ 
+/* Modul-modul Program : */
+
+//Nama modul :
+//Jenis modul :
+//Nama Penanggung Jawab :
+//Tanggal/versi :
+
+//Fungsi :
  
 void persegi_panjang()
 {
- int length, breadth, luasPP;
+ int panjang, lebar, luasPP, kelilingPP;
  
-   printf("\nEnter the Length of Rectangle : ");
-   scanf("%d", &length);
+   printf("\nMasukkan panjang Persegi Panjang : ");
+   scanf("%d", &panjang);
  
-   printf("\nEnter the Breadth of Rectangle : ");
-   scanf("%d", &breadth);
+   printf("Masukkan panjang lebar persegi panjang : ");
+   scanf("%d", &lebar);
  
-   luasPP = length * breadth;
-   printf("\nArea of Rectangle : %d", luasPP);
+   luasPP = panjang * lebar;
+   kelilingPP = 2 * (panjang + lebar);
+   
+   printf("Luas Persegi Panjang : %d", luasPP);
+   printf("Luas Persegi Panjang : %d", kelilingPP);
 }
 
 /* Modul-modul Program : */
@@ -113,14 +144,84 @@ void persegi_panjang()
 
 void persegi()
 {
-   int side, luasPersegi;
+   int sisi, luasPersegi, kelilingPersegi;
 	
-   printf("\nEnter the Length of Side : ");
-   scanf("%d", &side);
+   printf("\nMasukkan panjang sisi : ");
+   scanf("%d", &sisi);
  
-   luasPersegi = side * side;
-   printf("\nArea of Square : %d", luasPersegi);
+   luasPersegi = sisi * sisi;
+   kelilingPersegi = 4 * sisi;
+   
+   printf("Luas Persegi : %d", luasPersegi);
+   printf("Keliling Persegi : %d", kelilingPersegi);
 }
+
+/* Modul-modul Program : */
+
+//Nama modul :
+//Jenis modul :
+//Nama Penanggung Jawab :
+//Tanggal/versi :
+
+//Fungsi :
+
+void jumlahBilanganAsli() {	//Menghitung jumlah dari bilangan asli
+    int bilangan_positif, i = 1, jumlah_positif = 0;
+
+    printf("\nMasukkan bilangan positif : ");
+    scanf("%d", &bilangan_positif);
+
+    for (i = 1; i <= bilangan_positif; ++i) {	//Rekursif
+        jumlah_positif += i;
+    }
+
+    printf("Jumlah dari %d = %d", bilangan_positif, jumlah_positif);
+}
+
+/* Modul-modul Program : */
+
+//Nama modul :
+//Jenis modul :
+//Nama Penanggung Jawab :
+//Tanggal/versi :
+
+//Fungsi :
+
+void pangkat() {	//Menghitung jumlah dari bilangan asli
+    double angka, eksponen, hasil_pangkat;
+    
+    printf("\nMasukkan bilangan yang akan menjadi eksponen : ");
+    scanf("%lf", &angka);
+    printf("Masukkan bilangan positif yang akan menjadi eksponen : ");
+    scanf("%lf", &eksponen);
+
+    // Hitung operasi perpangkatan dengan fungsi 'pow' dari math.h
+    hasil_pangkat = pow(angka, eksponen);
+
+    printf("%.1lf^%.1lf = %.2lf", angka, eksponen, hasil_pangkat);
+}
+
+/* Modul-modul Program : */
+
+//Nama modul :
+//Jenis modul :
+//Nama Penanggung Jawab :
+//Tanggal/versi :
+
+//Fungsi :
+
+void faktorial() {	//Menghitung jumlah dari bilangan asli
+    int i=1,f=1,faktorial;
+ 
+  printf("\nMasukkan angka : ");
+  scanf("%d",&faktorial);
+ 
+  for(i=1;i<=faktorial;i++)
+      f=f*i;
+ 
+  printf("Faktorial dari %d adalah %d",faktorial,f);
+}
+
 
 //Deklarasi 3 function
 double kaliBagi();	//Modul perkalian dan pembagian
@@ -173,22 +274,22 @@ int main()
 	scanf("%d", &pilihan);
         switch (pilihan) {	//memilih print secara prefix, infix, atau postfix
             case 1:
-                printf(" 1. Prefix : ");
+                printf("1. Prefix : ");
    				pilihanTraversal(akar, 1);	//mencetak data secara preorder
    				break;
                 
             case 2:
-                printf(" 2. Infix : ");
+                printf("2. Infix : ");
     			pilihanTraversal(akar, 2);	//mencetak data secara inorder
     			break;
                 
             case 3:
-                printf(" 3. Postfix : ");
+                printf("3. Postfix : ");
  			   	pilihanTraversal(akar, 3);	//mencetak data secara postorder
  			   	break;
  			   	
             default:
-                printf(" Masukkan angka yang benar!");
+                printf("Masukkan angka yang benar!");
                 break;
         }
 	
@@ -230,8 +331,8 @@ int main()
     for (j = i - 1; j > 0; j--)			//selama elemen pada array Octal masih ada
         printf("%d", octal[j]);			//menampilkan hasil konversi dari desimal ke octal
     
-    
-    //Modul heksa
+    /*
+    //Modul heksa (BELUM FINAL!)
 	i = 0;
 	j = 0;
 	
@@ -250,12 +351,22 @@ int main()
 	// menampilkan heksadesimal
     for (i = j; i >= 0; i--)	//untuk semua elemen heksadesimal
             printf("\n Heksadesimal : %c", hexadesimal[i]);
+            */
             
-    
 	//MODUL LUAS KELILING
 	int num;
-    printf("Masukkan pilihan : ")
-   scanf("%d", &num);
+    printf("\nMasukkan pilihan : ");
+    printf("\n1 : Menghitung luas dan keliling lingkaran");
+    printf("\n2 : Menghitung luas dan keliling persegi");
+    printf("\n3 : Menghitung luas dan keliling segitiga");
+    printf("\n4 : Menghitung luas dan keliling persegi panjang");
+    printf("\n5 : Menghitung jumlah dari bilangan asli");
+    printf("\n6 : Menghitung hasil perpangkatan");
+    printf("\n7 : Menghitung faktorial");
+    
+    printf("\n\nPilihan : ");
+	scanf("%d", &num);
+	
         switch (num) {
             case 1:
                 lingkaran();
@@ -269,6 +380,15 @@ int main()
             case 4:
                 persegi_panjang();
                 break;
+            case 5:
+                jumlahBilanganAsli();
+                break;   
+            case 6:
+                pangkat();
+                break; 
+			case 7:
+                faktorial();
+                break;     
             default:
             	break;
         }
