@@ -67,7 +67,7 @@ StackNode pop(Stack *stack)	//melepas atau menghapus elemen pada stack
 {
 	StackNode periksa;	//stack untuk memeriksa kondisi Stack sebelum melepas elemen
 	
-	periksa.data = dummy_data;		//inisialisasi data kosong
+	periksa.data_kosong = 0;		//inisialisasi data kosong
 	periksa.cek_karakter = FALSE;	//boolean yang diinisialisasi FALSE (0) untuk mengecek karakter
 	
 	if(!stack || isEmpty(stack))	//Jika stack kosong (NULL)

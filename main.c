@@ -1,3 +1,24 @@
+/* 
+Nama Kelompok : ROC 4
+Nama Anggota :
+1. Dhiya Fakhar Nafi (201524002)
+2. Difa Moch Fadhilah (201524004)
+3. Rijal Azmi
+Kelas : 1A
+
+Program yang dipilih : Kalkulator
+Alasan :
+Mencari tantangan baru & mencoba mengimplementasikan ADT Tree
+
+ADT yang digunakan :
+1. ADT Tree (untuk menampung operator dan bilangan dalam bentuk struktur data Tree)
+2. ADT Stack (untuk menampung operator dari operasi matematis)
+
+Versi Program : 2.2 (Penambahan 3 fitur (modul) baru)
+
+Progres : 90% (Program 95%, penambahan komentar 80%)
+*/
+
 #include <ctype.h> // untuk menggunakan fungsi 'isdigit()'
 #include <math.h>  // untuk menggunakan fungsi 'pow()'
 #include "Tree.h"
@@ -53,7 +74,7 @@ void cekDanSetKarakter(char daunStack)	//Mengecek apakah elemen stack merupakan 
 
 //Fungsi :
 
-void lingkaran()
+void lingkaran()		//Modul untuk menghitung luas dan keliling lingkaran
 {
    int jari_jari;
    float luasLingkaran, kelilingLingkaran;
@@ -62,10 +83,10 @@ void lingkaran()
    scanf("%d", &jari_jari);
  
    luasLingkaran = 3.14 * jari_jari * jari_jari;
-   printf("Luas Lingkaran : %f", luasLingkaran);
+   printf("\nLuas Lingkaran : %f", luasLingkaran);
    
    luasLingkaran = 2 * 3.14 * jari_jari;
-   printf("Keliling Lingkaran : %f", kelilingLingkaran);
+   printf("\nKeliling Lingkaran : %f", kelilingLingkaran);
 }
 
 /* Modul-modul Program : */
@@ -77,7 +98,7 @@ void lingkaran()
 
 //Fungsi :
 
-void segitiga()
+void segitiga()	//Modul untuk menghitung luas dan keliling segitiga
 {
    int alas, tinggi, panjang1, panjang2, panjang3;
    float luasSegitiga, kelilingSegitiga;
@@ -116,14 +137,14 @@ void segitiga()
 
 //Fungsi :
  
-void persegi_panjang()
+void persegi_panjang()	//Modul untuk menghitung luas dan keliling persegi_panjang
 {
  int panjang, lebar, luasPP, kelilingPP;
  
    printf("\nMasukkan panjang Persegi Panjang : ");
    scanf("%d", &panjang);
  
-   printf("Masukkan panjang lebar persegi panjang : ");
+   printf("\nMasukkan panjang lebar persegi panjang : ");
    scanf("%d", &lebar);
  
    luasPP = panjang * lebar;
@@ -142,7 +163,7 @@ void persegi_panjang()
 
 //Fungsi :
 
-void persegi()
+void persegi()		//Modul untuk menghitung luas dan keliling persegi
 {
    int sisi, luasPersegi, kelilingPersegi;
 	
@@ -198,7 +219,7 @@ void pangkat() {	//Menghitung jumlah dari bilangan asli
     // Hitung operasi perpangkatan dengan fungsi 'pow' dari math.h
     hasil_pangkat = pow(angka, eksponen);
 
-    printf("%.1lf^%.1lf = %.2lf", angka, eksponen, hasil_pangkat);
+    printf("Hasil %.1lf pangkat %.1lf adalah %.2lf", angka, eksponen, hasil_pangkat);
 }
 
 /* Modul-modul Program : */
@@ -216,10 +237,10 @@ void faktorial() {	//Menghitung jumlah dari bilangan asli
   printf("\nMasukkan angka : ");
   scanf("%d",&faktorial);
  
-  for(i=1;i<=faktorial;i++)
+  for(i=1;i<=faktorial;i++)	//fungsi rekursif faktorial
       f=f*i;
  
-  printf("Faktorial dari %d adalah %d",faktorial,f);
+  printf("\nFaktorial dari %d adalah %d",faktorial,f);
 }
 
 
@@ -353,7 +374,7 @@ int main()
             printf("\n Heksadesimal : %c", hexadesimal[i]);
             */
             
-	//MODUL LUAS KELILING
+	//Menu memilih menghitung Luas dan Keliling, Faktorial, Perpangkatan, atau jumlah dari bilangan asli
 	int num;
     printf("\nMasukkan pilihan : ");
     printf("\n1 : Menghitung luas dan keliling lingkaran");

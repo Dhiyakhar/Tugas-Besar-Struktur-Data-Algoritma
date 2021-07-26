@@ -1,7 +1,10 @@
 #ifndef TREE_H_INCLUDED
 #define TREE_H_INCLUDED
 
-#include "Common.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include "boolean.h"
+#include "Stack.h"
 
 typedef struct TreeNode	//Tree
 {
