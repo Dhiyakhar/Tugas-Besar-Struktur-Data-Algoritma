@@ -5,16 +5,16 @@
 #include <stdio.h>
 #include "boolean.h"
 
+/*
+Union mengalokasikan satu ruang penyimpanan umum untuk semua anggotanya. 
+Anggota 'Union' hanya dapat diakses satu per satu.
+*/
+
 typedef union	
 {
 	double bilangan;		//menampung bilangan pada operasi matematis
 	char operatorMatematis;	//menampung operator (+), (-), (*), (/) pada operasi matematis di Stack
 } Data;
-
-/*
-Union mengalokasikan satu ruang penyimpanan umum untuk semua anggotanya. 
-Anggota 'Union' hanya dapat diakses satu per satu.
-*/
 
 //sumber : https://binaryupdates.com/structures-typedef-union-in-c-programming/
 
