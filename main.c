@@ -77,9 +77,9 @@ void lingkaran()
    luasLingkaran = 3.14 * jari_jari * jari_jari;
    printf("\nLuas Lingkaran : %f", luasLingkaran);
    
-   luasLingkaran = 2 * 3.14 * jari_jari;
+   kelilingLingkaran = 2 * 3.14 * jari_jari;
    printf("\nKeliling Lingkaran : %f", kelilingLingkaran);
-}
+}	
 
 //Nama modul : segitiga
 //Jenis modul : Prosedur
@@ -355,7 +355,7 @@ int main()
         hasilBagi_hexa = hasilBagi_hexa / 16;
     }
 	
-	printf("\n Octal : ");
+	printf("\n Heksadesimal : ");
 	
     for (a = b; a >= 0; a--)
             printf("%c", hexadesimal_hexa[a]);
